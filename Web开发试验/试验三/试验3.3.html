@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>在线答题</title>
+</head>
+<body>
+    <h1 style="color: green;text-align: center">欢迎使用在线答题系统</h1>
+    <h2 style="text-align: center">计时开始，请作答
+        <span id="hours">00</span>
+        <span>:</span>
+        <span id="minute">00</span>
+        <span>:</span>
+        <span id="second">00</span>
+    </h2>
+    <hr/>
+    <ol>
+        1、世界四大洋中面积最小的是: 
+        <input type="radio" name="q1" value="e" id="1-1"/>太平洋
+        <input type="radio" name="q1" value="e" id="1-2"/>大西洋
+        <input type="radio" name="q1" value="e" id="1-3"/>印度洋
+        <input type="radio" name="q1" value="s" id="1-4"/>北冰洋
+    </ol>
+    <br/>
+    <ol>
+        2、按年吞吐量算世界最大的港口是：
+        <input type="radio" name="q2" value="e" id="2-1"/>纽约
+        <input type="radio" name="q2" value="e" id="2-2"/>神户
+        <input type="radio" name="q2" value="s" id="2-3"/>鹿特丹
+        <input type="radio" name="q2" value="e" id="2-4"/>上海
+    </ol>
+    <br>
+    <ol>
+        3、石头城是对我国哪座城市的美称?
+        <input type="radio" name="q3" value="e" id="3-1"/>南昌
+        <input type="radio" name="q3" value="s" id="3-2"/>南京
+        <input type="radio" name="q3" value="e" id="3-3"/>拉萨
+        <input type="radio" name="q3" value="e" id="3-4"/>西安
+    </ol>
+    <br>
+    <ol>
+        4、“山城”是我国哪座城市的雅号?
+        <input type="radio" name="q4" value="e" id="4-1"/>洛阳
+        <input type="radio" name="q4" value="e" id="4-2"/>西安
+        <input type="radio" name="q4" value="s" id="4-3"/>重庆
+        <input type="radio" name="q4" value="e" id="4-4"/>福州
+    </ol>
+    <br>
+    <ol>
+        5、我国面积最大的湖泊是: 
+        <input type="radio" name="q5" value="s" id="5-1"/>青海湖
+        <input type="radio" name="q5" value="e" id="5-2"/>鄱阳湖
+        <input type="radio" name="q5" value="e" id="5-3"/>洞庭湖
+        <input type="radio" name="q5" value="e" id="5-4"/>太湖
+    </ol>
+    <br>
+    <button onclick="submit()">交卷</button>
+    <div id="show"></div>
+    <script>
+        window.onload = function () {
+            const hours = document.getElementById('hours');
+            const minute = document.getElementById('minute');
+            const second = document.getElementById('second');
+            let timer = null;
+            let Hours = 0;
+            let Minute = 0;
+            let Second = 0;
+            timer = setInterval(function () {
+                Second++;
+                if (Second > 59) {
+                    Second = 0;
+                    Minute++;
+                    if (Minute > 59) {
+                        Minute = 0;
+                        Hours++;
+                    }
+                }
+                if (Second < 10) {
+                    second.innerText = "0" + Second;
+                } else {
+                    second.innerText = Second;
+                }
+                if (Minute < 10) {
+                    minute.innerText = "0" + Minute;
+                } else {
+                    minute.innerText = Minute;
+                }
+                if (Hours < 10) {
+                    hours.innerText = "0" + Hours;
+                } else {
+                    hours.innerText = Hours;
+                }
+            }, 1000);
+        };
+        let score = 0;
+        let tru = [];
+        let fals = [];
+        function submit() {
+            tru = [];
+            fals = [];
+            score = 0;
+            const h = document.getElementById('hours');
+            const m = document.getElementById('minute');
+            const s = document.getElementById('second');
+            const show = document.getElementById('show');
+            const quNum = 5;
+            for (let i = 1; i <= quNum; i++) {
+                handle('q' + i, i, quNum);
+            }
+            const countTime = '共花了时间为：<span style="color: red;">' + h.innerHTML + '小时' + m.innerHTML + '分' + s.innerHTML + '秒</span><br/>';
+            const testTrue = "您正确的题目为: " + tru + '<br/>';
+            const testFalse = "您答错的题目为: " + fals + '<br/>';
+            const userScore = '您的成绩为：' + score + '<br/>';
+            show.innerHTML = countTime + testTrue + testFalse + userScore;
+        }
+        function handle(tagName, No, numQ) {
+            const zz = getRadioButtonCheckedValue(tagName);
+            if (zz ==='s') {
+                score += (100 / numQ);
+                tru.push(No);
+            } else {
+                fals.push(No);
+            }
+        }
+        function getRadioButtonCheckedValue(tagNameAttr) {
+            const radio_tag = document.getElementsByName(tagNameAttr);
+            for (let i = 0; i < radio_tag.length; i++) {
+                if (radio_tag[i].checked) {
+                    return radio_tag[i].value;
+                }
+            }
+        }
+    </script>
+</body>
+</html>

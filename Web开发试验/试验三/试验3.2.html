@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>表格样式设置</title>
+    <style>
+        table {
+            margin: 0 auto;
+            text-align: center;
+            border: 1px solid #000;
+            width: 500px;
+            border-collapse: collapse;
+        }
+    </style>
+</head>
+<body>
+    <table id="tableInfo">
+        <thead>
+            <tr>
+                <th>部门</th>
+                <th>姓名</th>
+                <th>工资</th>
+                <th>性别</th>
+                <th>年龄</th>
+                <th>职位</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>销售部</td>
+                <td>王军</td>
+                <td>8500</td>
+                <td>男</td>
+                <td>29</td>
+                <td>经理</td>
+            </tr>
+            <tr>
+                <td>销售部</td>
+                <td>张晓红</td>
+                <td>5200</td>
+                <td>女</td>
+                <td>32</td>
+                <td>主任</td>
+            </tr>
+            <tr>
+                <td>销售部</td>
+                <td>李霞</td>
+                <td>4500</td>
+                <td>女</td>
+                <td>34</td>
+                <td>销售员</td>
+            </tr>
+            <tr>
+                <td>销售部</td>
+                <td>王晓旭</td>
+                <td>5200</td>
+                <td>女</td>
+                <td>31</td>
+                <td>销售员</td>
+            </tr>
+            <tr>
+                <td>销售部</td>
+                <td>孙乐</td>
+                <td>5823</td>
+                <td>男</td>
+                <td>37</td>
+                <td>销售员</td>
+            </tr>
+            <tr>
+                <td>销售部</td>
+                <td>徐凯丽</td>
+                <td>3600</td>
+                <td>女</td>
+                <td>38</td>
+                <td>销售员</td>
+            </tr>
+            <tr>
+                <td>销售部</td>
+                <td>周伟</td>
+                <td>6300</td>
+                <td>男</td>
+                <td>45</td>
+                <td>销售员</td>
+            </tr>
+        </tbody>
+    </table>
+    <script>
+        window.onload = function () {
+            const table = document.getElementById('tableInfo');
+            const rows = table.getElementsByTagName('tr');
+            for (let i = 0; i < rows.length; i++) {
+                if (i % 2 === 0) {
+                    rows[i].style.backgroundColor = 'grey';
+                    rows[i].addEventListener('mouseout', function () {
+                        this.style.backgroundColor = 'grey';
+                    }, false);
+                } else {
+                    rows[i].style.backgroundColor = 'white';
+                    rows[i].addEventListener('mouseout', function () {
+                        this.style.backgroundColor = 'white';
+                    }, false);
+                }
+                rows[i].addEventListener('mouseover', function () {
+                    this.style.backgroundColor ='red';
+                }, false);
+            }
+        };
+    </script>
+</body>
+</html>

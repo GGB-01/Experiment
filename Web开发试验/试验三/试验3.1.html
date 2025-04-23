@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>用户注册</title>
+</head>
+<body>
+    <form id="registerForm">
+        <label for="username">用户名：</label>
+        <input type="text" id="username" required><br>
+        <label for="password">密码：</label>
+        <input type="password" id="password" required><br>
+        <label for="confirmPassword">确认密码：</label>
+        <input type="password" id="confirmPassword" required><br>
+        <label for="idCard">身份证号：</label>
+        <input type="text" id="idCard" required><br>
+        <label for="email">邮箱：</label>
+        <input type="email" id="email" required><br>
+        <label for="phone">电话：</label>
+        <input type="text" id="phone" required><br>
+        <input type="submit" value="注册">
+    </form>
+    <div id="errorMsg"></div>
+    <script>
+        document.getElementById('registerForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+            const idCard = document.getElementById('idCard').value;
+            const email = document.getElementById('email').value;
+            const phone = document.getElementById('phone').value;
+            const errorMsg = document.getElementById('errorMsg');
+            errorMsg.innerHTML = '';
+            let hasError = false;
+            if (username === '') {
+                errorMsg.innerHTML += '用户名不能为空<br>';
+                hasError = true;
+            }
+            const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/;
+            if (!passwordRegex.test(password)) {
+                errorMsg.innerHTML += '密码长度不小于8位，且需包含字母、数字和特殊字符<br>';
+                hasError = true;
+            }
+            if (password!== confirmPassword) {
+                errorMsg.innerHTML += '密码和确认密码不一致<br>';
+                hasError = true;
+            }
+            const idCardRegex = /^[1-9]\d{5}(18|19|20)\d{2}((0[1-9])|(1[0-2]))(([0-2][1-9])|10|20|30|31)\d{3}[0-9Xx]$/;
+            if (!idCardRegex.test(idCard)) {
+                errorMsg.innerHTML += '身份证号格式不正确<br>';
+                hasError = true;
+            }
+            const emailRegex = /^[A-Za-z0-9]+([-._][A-Za-z0-9]+)*@[A-Za-z0-9]+(-[A-Za-z0-9]+)*(\.[A-Za-z]{2,6}|[A-Za-z]{2,4}\.[A-Za-z]{2,3})$/;
+            if (!emailRegex.test(email)) {
+                errorMsg.innerHTML += '邮箱格式不正确<br>';
+                hasError = true;
+            }
+            const phoneRegex = /^1\d{10}$|^0\d{2,3}-[1-9]\d{6,7}$/;
+            if (!phoneRegex.test(phone)) {
+                errorMsg.innerHTML += '电话格式不正确<br>';
+                hasError = true;
+            }
+            if (!hasError) {
+                alert('注册成功');
+            }
+        });
+    </script>
+</body>
+</html>

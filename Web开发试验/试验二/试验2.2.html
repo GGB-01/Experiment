@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+
+<head>
+   
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>个人主页</title>
+    <style>
+        body {
+        }
+        .background-image {
+            background-image: url('./background.jpg');
+            background-repeat: no-repeat;
+            /* 背景图像不重复显示 */
+            background-size: cover;
+            /* 背景图像覆盖整个元素 */
+            padding: 20px  ;
+            /* 设置元素的内边距为 20px */
+        }
+
+        /* 导航栏样式 */
+        .navbar {
+            /* 选择类名为 navbar 的元素 */
+            background-color: #333;
+            /* 设置背景颜色为深灰色 */
+            overflow: hidden;
+            /* 隐藏溢出元素的内容 */
+            margin-bottom: 20px;
+            /* 设置元素的底部外边距为 20px */
+        }
+
+        .navbar a {
+            /* 选择类名为 navbar 下的所有 a 元素 */
+            float: left;
+            /* 元素向左浮动 */
+            display: block;
+            /* 将元素显示为块级元素 */
+            color: white;
+            /* 设置文本颜色为白色 */
+            text-align: center;
+            /* 文本居中对齐 */
+            padding: 14px 16px;
+            /* 设置元素的内边距，上下为 14px，左右为 16px */
+            text-decoration: none;
+            /* 去除文本的下划线 */
+        }
+
+        .navbar a:hover {
+            /* 选择类名为 navbar 下的 a 元素在鼠标悬停时的状态 */
+            background-color: #ddd;
+            /* 设置背景颜色为浅灰色 */
+            color: black;
+            /* 设置文本颜色为黑色 */
+        }
+
+        /* 内容区域样式 */
+        .content {
+            /* 选择类名为 content 的元素 */
+            display: flex;
+            /* 使用 Flexbox 布局 */
+            justify-content: space-between;
+            /* 子元素在主轴上均匀分布，两端对齐 */
+        }
+
+        /* 作品展示区样式 */
+        .works-display {
+            /* 选择类名为 works - display 的元素 */
+            width: 60%;
+            /* 设置元素宽度为父元素宽度的 60% */
+            background-color: rgba(255, 255, 255, 0.8);
+            /* 设置背景颜色为白色，透明度为 0.8 */
+            padding: 20px;
+            /* 设置元素的内边距为 20px */
+            border-radius: 5px;
+            /* 设置元素的边框圆角为 5px */
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+            /* 设置元素的阴影效果 */
+        }
+
+        .works-display h2 {
+            /* 选择类名为 works - display 下的所有 h2 元素 */
+            color: #333;
+            /* 设置文本颜色为深灰色 */
+        }
+
+        /* 个人信息和最新动态区域样式 */
+        .info-section {
+            /* 选择类名为 info - section 的元素 */
+            width: 38%;
+            /* 设置元素宽度为父元素宽度的 38% */
+        }
+
+        .personal-info {
+            /* 选择类名为 personal - info 的元素 */
+            background-color: rgba(255, 255, 255, 0.8);
+            /* 设置背景颜色为白色，透明度为 0.8 */
+            padding: 20px;
+            /* 设置元素的内边距为 20px */
+            border-radius: 5px;
+            /* 设置元素的边框圆角为 5px */
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+            /* 设置元素的阴影效果 */
+            margin-bottom: 20px;
+            /* 设置元素的底部外边距为 20px */
+        }
+
+        .personal-info h2 {
+            /* 选择类名为 personal - info 下的所有 h2 元素 */
+            color: #333;
+            /* 设置文本颜色为深灰色 */
+        }
+
+        .latest-news {
+            /* 选择类名为 latest - news 的元素 */
+            background-color: rgba(255, 255, 255, 0.8);
+            /* 设置背景颜色为白色，透明度为 0.8 */
+            padding: 20px;
+            /* 设置元素的内边距为 20px */
+            border-radius: 5px;
+            /* 设置元素的边框圆角为 5px */
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+            /* 设置元素的阴影效果 */
+        }
+
+        .latest-news h2 {
+            /* 选择类名为 latest - news 下的所有 h2 元素 */
+            color: #333;
+            /* 设置文本颜色为深灰色 */
+        }
+
+        /* 版权信息样式 */
+        .copyright {
+            /* 选择类名为 copyright 的元素 */
+            background-color: rgba(0, 0, 0, 0.5);
+            /* 设置背景颜色为黑色，透明度为 0.5 */
+            color: white;
+            /* 设置文本颜色为白色 */
+            text-align: center;
+            /* 文本居中对齐 */
+            padding: 10px;
+            /* 设置元素的内边距为 10px */
+            margin-top: 20px;
+            /* 设置元素的顶部外边距为 20px */
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 包含页面的可见内容 -->
+    <div class="background-image">
+        <!-- 创建一个类名为 background - image 的 div 元素，用于显示背景图像 -->
+        <nav class="navbar">
+            <!-- 创建一个类名为 navbar 的导航栏 -->
+            <a href="#">首页</a>
+            <!-- 创建一个链接，文本为“首页”，当前链接指向空 -->
+            <a href="#">日志</a>
+            <!-- 创建一个链接，文本为“日志”，当前链接指向空 -->
+            <a href="#">相册</a>
+            <!-- 创建一个链接，文本为“相册”，当前链接指向空 -->
+            <a href="#">留言</a>
+            <!-- 创建一个链接，文本为“留言”，当前链接指向空 -->
+        </nav>
+        <div class="content">
+            <!-- 创建一个类名为 content 的 div 元素，用于容纳内容 -->
+            <div class="works-display">
+                <!-- 创建一个类名为 works - display 的 div 元素，用于展示作品 -->
+                <h2>作品展示区</h2>
+                <!-- 创建一个二级标题，文本为“作品展示区” -->
+                <p>这里展示我的作品1</p>
+                <!-- 创建一个段落，文本为“这里展示我的作品1” -->
+                <p>这里展示我的作品2</p>
+                <!-- 创建一个段落，文本为“这里展示我的作品2” -->
+            </div>
+            <div class="info-section">
+                <!-- 创建一个类名为 info - section 的 div 元素，用于容纳个人信息和最新动态 -->
+                <div class="personal-info">
+                    <!-- 创建一个类名为 personal - info 的 div 元素，用于展示个人信息 -->
+                    <h2>个人信息介绍</h2>
+                    <!-- 创建一个二级标题，文本为“个人信息介绍” -->
+                    <p>姓名：XXX</p>
+                    <!-- 创建一个段落，文本为“姓名：XXX” -->
+                    <p>职业：Web开发者</p>
+                    <!-- 创建一个段落，文本为“职业：Web开发者” -->
+                </div>
+                <div class="latest-news">
+                    <!-- 创建一个类名为 latest - news 的 div 元素，用于展示最新动态 -->
+                    <h2>最新动态</h2>
+                    <!-- 创建一个二级标题，文本为“最新动态” -->
+                    <p>我发布了新作品</p>
+                    <!-- 创建一个段落，文本为“我发布了新作品” -->
+                </div>
+            </div>
+        </div>
+        <footer class="copyright">
+            <p>版权所有©孤独摇滚中国</p>
+        </footer>
+    </div>
+</body>
+
+</html>
